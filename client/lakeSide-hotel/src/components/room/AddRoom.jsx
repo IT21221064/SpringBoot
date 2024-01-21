@@ -6,7 +6,7 @@ import { addRoom } from "../utils/ApiFunctions";
 const AddRoom = () => {
   const [newRoom, setNewRoom] = useState({
     photo: null,
-    roomtype: "",
+    roomType: "",
     roomPrice: "",
   });
   const [imagePreview, setImagePreview] = useState("");
@@ -15,10 +15,10 @@ const AddRoom = () => {
 
   const handleRoomInputChange = (e) => {
     const name = e.target.name;
-    let value = e.taerget.value;
+    let value = e.target.value;
     if (name === "roomPrice") {
-      if (!isNaN(value)) {
-        value.parseInt(value);
+      if (!isNaN(value) && value !== "") {
+        value = parseInt(value);
       } else {
         value = "";
       }
@@ -37,12 +37,12 @@ const AddRoom = () => {
     try {
       const success = await addRoom(
         newRoom.photo,
-        newRoom.roomtype,
+        newRoom.roomType,
         newRoom.roomPrice
       );
       if (success !== undefined) {
         setsuccessMessage("A new room was added to the database");
-        setNewRoom({ photo: null, roomtype: "", roomPrice: "" });
+        setNewRoom({ photo: null, roomType: "", roomPrice: "" });
         setImagePreview("");
         seterrorMessage("");
       } else {
