@@ -18,8 +18,8 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
     setNewRoomType(e.target.value);
   };
   const handleAddNewRoomType = () => {
-    if (newRoomType !== "") {
-      setNewRoomType([...roomType, newRoomType]);
+    if (newRoomType.trim() !== "") {
+      setRoomType([...roomType, newRoomType]);
       setNewRoomType("");
       setShowNewRoomTypeInput(false);
     }
@@ -41,7 +41,7 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
               }
             }}
           >
-            <option value={""}>-select a room type-</option>
+            <option value="">-select a room type-</option>
             <option value={"Add New"}>Add New</option>
             {roomType.map((type, index) => (
               <option key={index} value={type}>
@@ -50,20 +50,23 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
             ))}
           </select>
           {showNewRoomTypeInput && (
-            <div className="input-group">
-              <input
-                type="text"
-                placeholder="Enter a new room type"
-                className="form-control"
-                onChange={handleNewRoomTypeInputChange}
-              />
-              <button
-                className="btn btn-hotel"
-                type="button"
-                onClick={handleAddNewRoomType}
-              >
-                Add
-              </button>
+            <div className="mt-2">
+              <div className="input-group">
+                <input
+                  type="text"
+                  placeholder="Enter a new room type"
+                  className="form-control"
+                  onChange={handleNewRoomTypeInputChange}
+                  value={newRoomType}
+                />
+                <button
+                  className="btn btn-hotel"
+                  type="button"
+                  onClick={handleAddNewRoomType}
+                >
+                  Add
+                </button>
+              </div>
             </div>
           )}
         </div>
