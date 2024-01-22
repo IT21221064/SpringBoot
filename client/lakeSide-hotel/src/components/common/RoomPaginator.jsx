@@ -7,7 +7,19 @@ const RoomPaginator = ({ currentPage, totalPages, onPageChange }) => {
     <nav>
       <ul className="pagination, justify-content-center">
         {pageNumbers.map((pageNumber) => (
-          <li key={pageNumber}></li>
+          <li
+            key={pageNumber}
+            className={`page-item ${
+              currentPage === pageNumber ? "active" : ""
+            }`}
+          >
+            <button
+              className="page-link"
+              onClick={() => onPageChange(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          </li>
         ))}
       </ul>
     </nav>
