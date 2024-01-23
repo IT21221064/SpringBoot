@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { getAllRooms } from "../utils/ApiFunctions";
 
@@ -7,7 +7,7 @@ const ExistingRooms = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [roomsPerPage] = useState(8);
   const [isLoading, setIsLoading] = useState(false);
-  const [filteredRoomes, setFilteredRoom] = useState([]);
+  const [filteredRooms, setFilteredRoom] = useState([]);
   const [selectedRoomType, setSelectedRoomTypes] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessag] = useState("");
@@ -26,6 +26,28 @@ const ExistingRooms = () => {
       setErrorMessag(error);
     }
   };
+
+  useEffect(() => {
+    if (selectedRoomType == "") {
+      setFilteredRoom(rooms);
+    } else {
+      const filtered = rooms.filter(
+        (room) => room.roomType == selectedRoomType
+      );
+      setFilteredRoom(filtered);
+    }
+    setCurrentPage(1);
+  }, [rooms, selectedRoomType]);
+
+  const calculateTotalPages = (filteredRooms, roomsPerPage, rooms) => {
+    const totalRooms =
+      filteredRooms.length > 0 ? filteredRooms.length : rooms.length;
+    return Math.ceil(totalRooms / roomsPerPage);
+  };
+
+  const indexOfLastRoom = currentPage * roomsPerPage;
+  const indexOfFirstRoom = indexOfLastRoom - roomsPerPage;
+  const currentRooms = filteredRooms.slice(indexOfFirstRoom, indexOfLastRoom);
 
   return <div></div>;
 };
