@@ -66,12 +66,12 @@ public class RoomController {
 
     private RoomResponse getRoomResponse(Room room) {
         List<BookedRoom> bookings = getAllBookingsByRoomId(room.getId());
-        List<BookingResponse> bookingInfo = bookings
+        /*List<BookingResponse> bookingInfo = bookings
                 .stream()
                 .map(booking -> new BookingResponse(booking.getBookingId(),
                         booking.getCheckInDate(),
                         booking.getCheckOutDate(),
-                        booking.getBookingConfirmationCode())).toList();
+                        booking.getBookingConfirmationCode())).toList();*/
         byte[] photoBytes = null;
         Blob photoBlob = room.getPhoto();
         if(photoBlob != null){
@@ -85,8 +85,7 @@ public class RoomController {
                 room.getRoomType(),
                 room.getRoomPrice(),
                 room.isBooked(),
-                photoBytes,
-                bookingInfo);
+                photoBytes);
     }
 
     private List<BookedRoom> getAllBookingsByRoomId(Long roomId) {
