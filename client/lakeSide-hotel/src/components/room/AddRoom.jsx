@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import RoomTypeSelector from "../common/RoomTypeSelector";
 import { addRoom } from "../utils/ApiFunctions";
+import ExistingRooms from "./ExistingRooms";
 
 const AddRoom = () => {
   const [newRoom, setNewRoom] = useState({
@@ -129,6 +130,7 @@ const AddRoom = () => {
           </div>
         </div>
       </section>
+      <ExistingRooms />
     </>
   );
 };
