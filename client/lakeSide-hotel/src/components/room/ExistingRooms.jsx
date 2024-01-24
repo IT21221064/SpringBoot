@@ -49,7 +49,21 @@ const ExistingRooms = () => {
   const indexOfFirstRoom = indexOfLastRoom - roomsPerPage;
   const currentRooms = filteredRooms.slice(indexOfFirstRoom, indexOfLastRoom);
 
-  return <div></div>;
+  return (
+    <>
+      {isLoading ? (
+        <p> Loading existing rooms</p>
+      ) : (
+        <>
+          <section className="mt-5 mb-5 container">
+            <div className="d-flex justify-content-center mb-3 mt-5">
+              <h2>Existing Rooms</h2>
+            </div>
+          </section>
+        </>
+      )}
+    </>
+  );
 };
 
 export default ExistingRooms;
