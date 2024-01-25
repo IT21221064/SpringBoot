@@ -5,7 +5,7 @@ import { deleteRoom } from "../utils/ApiFunctions";
 import RoomFilter from "../common/RoomFilter";
 import RoomPaginator from "../common/RoomPaginator";
 import { Col } from "react-bootstrap";
-import { FaEye, FaTrashAlt } from "react-icons/fa";
+import { FaEye, FaTrashAlt, FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ExistingRooms = () => {
