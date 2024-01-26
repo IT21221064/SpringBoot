@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { getRoomById, updateRoom } from "../utils/ApiFunctions";
 import { useParams, Link } from "react-router-dom";
+import RoomTypeSelector from "../common/RoomTypeSelector";
 
 const EditRoom = () => {
   const [room, setRoom] = useState({
@@ -12,6 +13,7 @@ const EditRoom = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [successMessage, setsuccessMessage] = useState("");
   const [errorMessage, seterrorMessage] = useState("");
+
   const { roomId } = useParams();
 
   const handleImageChange = (e) => {
@@ -80,7 +82,7 @@ const EditRoom = () => {
                 <div>
                   <RoomTypeSelector
                     handleRoomInputChange={handleInputChange}
-                    room={room}
+                    newRoom={room}
                   />
                 </div>
               </div>
@@ -113,7 +115,7 @@ const EditRoom = () => {
                 />
                 {imagePreview && (
                   <img
-                    src={imagePreview}
+                    src={`data:image/jpeg;base64,${imagePreview}`}
                     alt="Preview Room Photo"
                     style={{ maxWidth: "400px", maxHeight: "400px" }}
                     className="mb-3"
