@@ -14,6 +14,9 @@ const RoomCard = ({ room }) => {
               style={{ width: "100%", maxWidth: "200px", height: "auto" }}
             />
           </div>
+          <div className="flex-grow-1 ml-3 px-5">
+            <Card.Title className="hotel-color">{room.roomType}</Card.Title>
+          </div>
         </Card.Body>
       </Card>
     </Col>
