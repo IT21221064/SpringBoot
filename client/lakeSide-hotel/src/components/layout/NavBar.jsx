@@ -21,8 +21,8 @@ const NavBar = () => {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarScroll"
-          aria-aria-controls="navbarScroll"
-          arial-expanded="false"
+          aria-controls="navbarScroll" // Corrected attribute
+          aria-expanded="false" // Corrected attribute
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@ const NavBar = () => {
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
-                aria-aria-expanded="false"
+                aria-expanded="false"
                 onClick={handleAccountClick}
               >
                 {" "}
