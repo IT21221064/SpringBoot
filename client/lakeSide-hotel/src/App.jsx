@@ -8,6 +8,7 @@ import EditRoom from "./components/room/EditRoom";
 import AddRoom from "./components/room/AddRoom";
 import Footer from "./components/layout/Footer";
 import NavBar from "./components/layout/NavBar";
+import RoomListing from "./components/room/RoomListing";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/edit-room/:roomId" element={<EditRoom />} />
             <Route path="/existing-rooms" element={<ExistingRooms />} />
             <Route path="/add-room" element={<AddRoom />} />
+            <Route path="/brows-all-rooms" element={<RoomListing />} />
           </Routes>
         </Router>
         <Footer />
