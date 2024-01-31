@@ -1,7 +1,12 @@
 import React from "react";
+import { useState } from "react";
 
 const RoomCarousel = () => {
-  return <div>RoomCarousel</div>;
+  const [rooms, setRooms] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  return <div></div>;
 };
 
 export default RoomCarousel;
