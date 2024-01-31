@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { getAllRooms } from "../utils/ApiFunctions";
 
 const RoomCarousel = () => {
@@ -21,7 +22,19 @@ const RoomCarousel = () => {
       });
   }, []);
 
-  return <div></div>;
+  if (isLoading) {
+    return <div className="mt-5">Loading rooms...</div>;
+  }
+  if (errorMessage) {
+    return <div className="text-danger mb-5 mt-5">Error : {errorMessage}</div>;
+  }
+  return (
+    <section>
+      <Link to={"/browse-all-rooms"} className="hotel-color text-center">
+        Browse all rooms
+      </Link>
+    </section>
+  );
 };
 
 export default RoomCarousel;
