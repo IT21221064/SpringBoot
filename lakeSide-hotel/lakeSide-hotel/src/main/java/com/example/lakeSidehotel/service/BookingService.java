@@ -24,7 +24,7 @@ public class BookingService implements IBookingService {
 
     @Override
     public List<BookedRoom> getAllBookings() {
-        return null;
+        return bookingRepository.findAll();
     }
 
     @Override
@@ -53,7 +53,7 @@ public class BookingService implements IBookingService {
 
     @Override
     public BookedRoom findByBookingConfirmationCode(String confirmationCode) {
-        return null;
+        return bookingRepository.findByBookingConfirmationCode(confirmationCode);
     }
 
     private boolean roomIsAvailable(BookedRoom bookingRequest, List<BookedRoom> existingBookings) {
