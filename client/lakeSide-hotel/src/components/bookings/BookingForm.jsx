@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Form, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 
 const BookingForm = () => {
@@ -98,7 +98,94 @@ const BookingForm = () => {
     }
   };
 
-  return <div>BookingForm</div>;
+  return (
+    <>
+      <div className="container mb-5">
+        <div className="row">
+          <div className="col card-body mt-5">
+            <h4 className="card carrd-title">Reserve Room</h4>
+            <Form noValidate valited={validated} onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor="guestName">Full Name:</Form.Label>
+                <FormControl
+                  required
+                  type="text"
+                  id="guestName"
+                  name="guestName"
+                  value={booking.guestName}
+                  placeholder="Enter your full name"
+                  onChange={handleInputChange}
+                />
+                <Form.Control.Feedback type="inavlid">
+                  Please enter your fullname
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label htmlFor="guestEmail">Email :</Form.Label>
+                <FormControl
+                  required
+                  type="email"
+                  id="guestEmail"
+                  name="guestEmail"
+                  value={booking.guestEmail}
+                  placeholder="Enter your email"
+                  onChange={handleInputChange}
+                />
+                <Form.Control.Feedback type="inavlid">
+                  Please enter your email
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <fieldset style={{ border: "2px" }}>
+                <legend>Loading period</legend>
+                <div className="row">
+                  <div className="col-6">
+                    <Form.Label htmlFor="checkInDate">
+                      Check-In Date :
+                    </Form.Label>
+                    <FormControl
+                      required
+                      type="date"
+                      id="checkInDate"
+                      name="checkInDate"
+                      value={booking.checkInDate}
+                      placeholder="check-in date"
+                      onChange={handleInputChange}
+                    />
+                    <Form.Control.Feedback type="inavlid">
+                      Please select a check-in-date
+                    </Form.Control.Feedback>
+                  </div>
+
+                  <div className="col-6">
+                    <Form.Label htmlFor="checkOutDate">
+                      Check-In Date :
+                    </Form.Label>
+                    <FormControl
+                      required
+                      type="date"
+                      id="checkOutDate"
+                      name="checkOutDate"
+                      value={booking.checkOutDate}
+                      placeholder="check-out date"
+                      onChange={handleInputChange}
+                    />
+                    <Form.Control.Feedback type="inavlid">
+                      Please select a check-out-date
+                    </Form.Control.Feedback>
+                  </div>
+                  {errorMessage && (
+                    <p className="error-message text-danger">{errorMessage}</p>
+                  )}
+                </div>
+              </fieldset>
+            </Form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default BookingForm;
