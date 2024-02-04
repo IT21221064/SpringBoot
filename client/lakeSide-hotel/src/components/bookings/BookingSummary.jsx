@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Button } from "react-bootstrap";
 const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
   const checkInDate = moment(booking.checkInDate);
   const checkOutDate = moment(booking.checkOutDate);
@@ -51,10 +51,10 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
       <div>
         <h5>Number of Guests</h5>
         <strong>
-          Adult{booking.numberOfAdults > 1 ? "s" : ""} :{" "}
-          {booking.numberOfAdults}
+          Adult{booking.NumberOfAdults > 1 ? "s" : ""} :{" "}
+          {booking.NumberOfAdults}
         </strong>
-        <strong>Children : {booking.numberOfChildren}</strong>
+        <strong>Children : {booking.NumberOfChildren}</strong>
       </div>
       {payment > 0 ? (
         <>

@@ -16,8 +16,8 @@ public class BookingResponse {
     private LocalDate checkOutDate;
     private String guestFullName;
     private String guestEmail;
-    private int NumOfAdults;
-    private int NumOfChildren;
+    private int numOfAdults;
+    private int numOfChildren;
     private int totalNumOfGuest;
     private String bookingConfirmationCode;
     private RoomResponse room;

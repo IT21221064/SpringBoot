@@ -7,6 +7,7 @@ import com.example.lakeSidehotel.repository.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.Console;
 import java.util.List;
 
 @Service
@@ -33,10 +34,12 @@ public class BookingService implements IBookingService {
 
     @Override
     public String saveBooking(Long roomId, BookedRoom bookingRequest) {
-        if(bookingRequest.getCheckInDate().isBefore(bookingRequest.getCheckOutDate())){
-            throw new InvalidBookingRequestException("Check-in data must come before check-out data");
+      // if(bookingRequest.getCheckInDate().isBefore(bookingRequest.getCheckOutDate())){
+         //   throw new InvalidBookingRequestException("Check-in data must come before check-out data");
 
-        }
+     //   }
+        System.out.println("Check-in Date: " + bookingRequest.getCheckInDate());
+        System.out.println("Check-out Date: " + bookingRequest.getCheckOutDate());
         Room room = roomService.getRoomById(roomId).get();
         List<BookedRoom> existingBookings = room.getBookings();
         boolean roomIsAvailable = roomIsAvailable(bookingRequest,existingBookings);
