@@ -2,9 +2,10 @@ import React from "react";
 import { useState } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { DateRangePicker } from "react-date-range";
 
 const DateSlider = ({ onDateChange, onFilterChange }) => {
-  const [dataRange, setDataRange] = useState({
+  const [dateRange, setDataRange] = useState({
     startDate: undefined,
     endDate: undefined,
     key: "selection",
@@ -25,7 +26,19 @@ const DateSlider = ({ onDateChange, onFilterChange }) => {
     onFilterChange(null, null);
   };
 
-  return <div>DateSlider</div>;
+  return (
+    <>
+      <h5>Filter bookkings by date</h5>
+      <DateRangePicker
+        ranges={[dateRange]}
+        onChange={handleSelect}
+        className="mb-4"
+      />
+      <button className="btn btn-secondary" onClick={handleClearFilter}>
+        Clear Filter
+      </button>
+    </>
+  );
 };
 
 export default DateSlider;
