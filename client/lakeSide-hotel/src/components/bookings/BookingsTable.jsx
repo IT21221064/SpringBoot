@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { parseISO } from "date-fns";
+import DateSlider from "../common/DateSlider";
 
 const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
   const [filteredBookings, setFilteredBookings] = useState(bookingInfo);
@@ -32,7 +33,7 @@ const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
         onDateChange={filterBookings}
         onFilterChange={filterBookings}
       />
-      <table>
+      <table className="table table-bordered table-hover shadow">
         <thead>
           <tr>
             <th>S/N</th>
@@ -50,18 +51,18 @@ const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
           </tr>
         </thead>
         <tbody className="text-center">
-          {filterBookings.map((booking, index) => (
+          {filteredBookings.map((booking, index) => (
             <tr key={booking.id}>
               <td>{index + 1}</td>
               <td>{booking.id}</td>
               <td>{booking.room.id}</td>
               <td>{booking.checkInDate}</td>
               <td>{booking.checkOutDate}</td>
-              <td>{booking.guestName}</td>
+              <td>{booking.guestFullName}</td>
               <td>{booking.guestEmail}</td>
               <td>{booking.numOfAdults}</td>
               <td>{booking.numOfChildren}</td>
-              <td>{booking.totalNumOfGuests}</td>
+              <td>{booking.totalNumOfGuest}</td>
               <td>{booking.bookingConfirmationCode}</td>
               <td>
                 <button
