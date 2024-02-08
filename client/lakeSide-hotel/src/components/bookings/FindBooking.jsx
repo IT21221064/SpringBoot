@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { getBookingByConfirmationCode } from "../utils/ApiFunctions";
+import {
+  cancelBooking,
+  getBookingByConfirmationCode,
+} from "../utils/ApiFunctions";
 
 const FindBooking = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
@@ -52,6 +55,18 @@ const FindBooking = () => {
       setIsLoading(false);
     }, 2000);
   };
+  const handleBookingCancellation = async (bookingId) => {
+    try {
+      await cancelBooking(bookingInfo.bookingId);
+      setDeleted(true);
+      setBookingInfo(clearBookingInfo);
+      setConfirmationCode("");
+      setError("");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return <div>FindBooking</div>;
 };
 
