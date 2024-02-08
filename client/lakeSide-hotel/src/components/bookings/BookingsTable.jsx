@@ -6,9 +6,8 @@ import DateSlider from "../common/DateSlider";
 
 const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
   const [filteredBookings, setFilteredBookings] = useState(bookingInfo);
-
   const filterBookings = (startDate, endDate) => {
-    let filtered = bookingInfo;
+    let filtered = [...bookingInfo]; // Create a shallow copy
     if (startDate && endDate) {
       filtered = bookingInfo.filter((booking) => {
         const bookingStartDate = parseISO(booking.checkInDate);
@@ -52,9 +51,9 @@ const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
         </thead>
         <tbody className="text-center">
           {filteredBookings.map((booking, index) => (
-            <tr key={booking.id}>
+            <tr key={booking.bookingId}>
               <td>{index + 1}</td>
-              <td>{booking.id}</td>
+              <td>{booking.bookingId}</td>
               <td>{booking.room.id}</td>
               <td>{booking.checkInDate}</td>
               <td>{booking.checkOutDate}</td>
