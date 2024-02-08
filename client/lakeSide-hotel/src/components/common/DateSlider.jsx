@@ -28,7 +28,7 @@ const DateSlider = ({ onDateChange, onFilterChange }) => {
 
   return (
     <>
-      <h5>Filter bookkings by date</h5>
+      <h5>Filter bookings by date</h5>
       <DateRangePicker
         ranges={[dateRange]}
         onChange={handleSelect}
