@@ -89,6 +89,40 @@ const FindBooking = () => {
             </button>
           </div>
         </form>
+        {isLoading ? (
+          <div>Finding your booking</div>
+        ) : error ? (
+          <div className="text-danger">{error}</div>
+        ) : bookingInfo.bookingConfirmationCode ? (
+          <div className="col-md-6 mt-4 mb-5">
+            <h3>Booking Information</h3>
+            <p>Confirmation Code :{bookingInfo.bookingConfirmationCode}</p>
+            <p>Booking Id:{bookingInfo.bookingId}</p>
+            <p>Room Number:{bookingInfo.room.id}</p>
+            <p>Check-in Date:{bookingInfo.checkInDate}</p>
+            <p>Check-out Date:{bookingInfo.checkOutDate}</p>
+            <p>Full Name:{bookingInfo.guestFullName}</p>
+            <p>Email Address:{bookingInfo.guestEmail}</p>
+            <p>Adults:{bookingInfo.numOfAdults}</p>
+            <p>Children:{bookingInfo.numOfChildren}</p>
+            <p>Total Guest:{bookingInfo.totalNumOfGuest}</p>
+            {!isDeleted && (
+              <button
+                className="btn btn-danger"
+                onClick={() => handleBookingCancellation(bookingInfo.id)}
+              >
+                Cancel Booking
+              </button>
+            )}
+          </div>
+        ) : (
+          <div>find booking...</div>
+        )}
+        {isDeleted && (
+          <div className="alert alert-success mt-3" role="alert">
+            Booking has been cancelled successfully!
+          </div>
+        )}
       </div>
     </>
   );
