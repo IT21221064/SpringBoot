@@ -67,7 +67,31 @@ const FindBooking = () => {
     }
   };
 
-  return <div>FindBooking</div>;
+  return (
+    <>
+      <div
+        className="container mt-5 d-flex flex-column 
+  justify-content-center align-items-center"
+      >
+        <h2>Find My Booking</h2>
+        <form onSubmit={handleFormSubmit} className="col-md-6">
+          <div className="input-group mb-3">
+            <input
+              className="form-control"
+              id="confirmationCode"
+              name="confirmationCode"
+              value={confirmationCode}
+              onChange={handleInputChange}
+              placeholder="Enter the booking confirmation code"
+            />
+            <button className="btn btn-hotel input-group-text">
+              Find Booking
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default FindBooking;
