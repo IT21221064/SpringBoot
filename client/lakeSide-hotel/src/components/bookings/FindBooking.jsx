@@ -8,6 +8,7 @@ import {
 const FindBooking = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [bookingInfo, setBookingInfo] = useState({
     id: "",
@@ -59,12 +60,17 @@ const FindBooking = () => {
     try {
       await cancelBooking(bookingInfo.bookingId);
       setDeleted(true);
+      setSuccessMessage("Booking has been cancelled succefully!");
       setBookingInfo(clearBookingInfo);
       setConfirmationCode("");
       setError("");
     } catch (error) {
       setError(error.message);
     }
+    setTimeout(() => {
+      setSuccessMessage("");
+      setDeleted(false);
+    }, 2000);
   };
 
   return (
@@ -120,7 +126,7 @@ const FindBooking = () => {
         )}
         {isDeleted && (
           <div className="alert alert-success mt-3" role="alert">
-            Booking has been cancelled successfully!
+            {successMessage}
           </div>
         )}
       </div>
