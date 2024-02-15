@@ -100,6 +100,7 @@ public class RoomController {
         return ResponseEntity.ok(roomResponse);
     }
 
+    @GetMapping("/available-rooms")
     public ResponseEntity<List<RoomResponse>> getAvailableRooms(
             @RequestParam("checkInDate")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate checkInDate,
             @RequestParam("checkOutDate")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate checkOutDate,
