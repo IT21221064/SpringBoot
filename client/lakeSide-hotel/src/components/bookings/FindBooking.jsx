@@ -12,7 +12,7 @@ const FindBooking = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [bookingInfo, setBookingInfo] = useState({
     id: "",
-    room: { id: "" },
+    room: { id: "", roomType: "" },
     checkInDate: "",
     checkOutDate: "",
     guestFullName: "",
@@ -25,7 +25,7 @@ const FindBooking = () => {
   const [isDeleted, setDeleted] = useState(false);
   const clearBookingInfo = {
     bookingId: "",
-    room: { id: "" },
+    room: { id: "", roomType: "" },
     checkInDate: "",
     checkOutDate: "",
     guestFullName: "",
@@ -105,6 +105,7 @@ const FindBooking = () => {
             <p>Confirmation Code :{bookingInfo.bookingConfirmationCode}</p>
             <p>Booking Id:{bookingInfo.bookingId}</p>
             <p>Room Number:{bookingInfo.room.id}</p>
+            <p>Room Type:{bookingInfo.room.roomType}</p>
             <p>Check-in Date:{bookingInfo.checkInDate}</p>
             <p>Check-out Date:{bookingInfo.checkOutDate}</p>
             <p>Full Name:{bookingInfo.guestFullName}</p>
