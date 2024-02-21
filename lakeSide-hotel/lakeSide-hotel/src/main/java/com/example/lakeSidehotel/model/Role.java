@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 @Entity
 @Getter
 @Setter
@@ -17,4 +20,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Collection<User> users = new HashSet<>();
+    public void assignRoleToUser(User user){
+        user.getRoles().add(this);
+        this.getUsers().add(user);
+    }
 }
