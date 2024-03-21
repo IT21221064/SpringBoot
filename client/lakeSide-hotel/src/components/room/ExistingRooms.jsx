@@ -146,7 +146,6 @@ const ExistingRooms = () => {
                 ))}
               </tbody>
             </table>
-
             <RoomPaginator
               currentPage={currentPage}
               totalPages={calculateTotalPages(
